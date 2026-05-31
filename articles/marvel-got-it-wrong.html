@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marvel got it wrong — Biig Yaya</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    /* ── Shared card wrapper ── */
+    .stat-block {
+      margin: 40px 0;
+      padding: 22px 22px 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-family: 'Inter', sans-serif;
+    }
+    .stat-block-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    /* ── Sleep chart ��─ */
+    .sleep-rows { display: flex; flex-direction: column; gap: 14px; }
+    .sleep-row  { display: flex; flex-direction: column; gap: 5px; }
+    .sleep-row-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      font-size: 12px;
+      min-width: 0;
+    }
+    .sleep-row-label strong {
+      color: var(--text);
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
+    }
+    .sleep-row-label .val {
+      color: var(--muted);
+      white-space: nowrap;
+      flex-shrink: 0;
+      font-size: 11px;
+    }
+    .bar-track {
+      height: 28px;
+      background: var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      padding-left: 9px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      white-space: nowrap;
+      min-width: 34px;
+    }
+    .bar-blue        { background: #4a8fe8; }
+    .bar-coral       { background: #e8604a; }
+    .bar-blue-light  { background: #7bb3f0; }
+    .bar-coral-light { background: #f0957f; }
+    .chart-divider {
+      border: none;
+      border-top: 1px dashed var(--border);
+      margin: 4px 0;
+    }
+
+    /* ── 700-hour big stat ── */
+    .big-stat { display: flex; align-items: center; gap: 20px; }
+    .big-stat-number {
+      font-size: 64px;
+      font-weight: 700;
+      line-height: 1;
+      color: #e8604a;
+      flex-shrink: 0;
+    }
+    .big-stat-text { font-size: 15px; line-height: 1.5; color: var(--text); }
+    .big-stat-text em {
+      font-style: normal;
+      font-size: 13px;
+      color: var(--muted);
+      display: block;
+      margin-top: 4px;
+    }
+
+    /* ── BAC infographic ── */
+    .bac-wrap {
+      margin: 40px 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      font-family: 'Inter', sans-serif;
+    }
+    .bac-header {
+      padding: 14px 20px 12px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .bac-infographic {
+      display: grid;
+      grid-template-columns: 1fr 40px 1fr;
+    }
+    .bac-side {
+      padding: 28px 18px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 9px;
+    }
+    .bac-side-left  { background: #1a1a2e; }
+    .bac-side-right { background: #fff8f0; }
+    body.dark .bac-side-left  { background: #0d0d1a; }
+    body.dark .bac-side-right { background: #1f1608; }
+    .bac-vs {
+      background: #12121f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      color: #555577;
+      writing-mode: vertical-rl;
+      text-transform: uppercase;
+      border-left: 1px solid #222240;
+      border-right: 1px solid #222240;
+    }
+    body.dark .bac-vs { background: #080810; }
+    .bac-icon    { font-size: 38px; line-height: 1; }
+    .bac-headline {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .bac-side-left  .bac-headline { color: #7777aa; }
+    .bac-side-right .bac-headline { color: #b07040; }
+    .bac-big {
+      font-weight: 800;
+      font-size: 36px;
+      line-height: 1;
+    }
+    .bac-side-left  .bac-big { color: #ff6b6b; }
+    .bac-side-right .bac-big { color: #e87c30; font-size: 28px; }
+    .bac-tag {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+    .bac-side-left  .bac-tag { background: rgba(255,107,107,0.18); color: #ff6b6b; }
+    .bac-side-right .bac-tag { background: rgba(232,124,48,0.18);  color: #e87c30; }
+    .bac-desc {
+      font-size: 12px;
+      line-height: 1.55;
+      max-width: 150px;
+    }
+    .bac-side-left  .bac-desc { color: #7070aa; }
+    .bac-side-right .bac-desc { color: #a07050; }
+
+    /* ── Superpower cards ── */
+    .powers-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .power-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+    }
+    .power-card-icon  { font-size: 22px; margin-bottom: 6px; }
+    .power-card-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+    .power-card-desc  { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+    /* ── Mobile — matches site 600px breakpoint ── */
+    @media (max-width: 600px) {
+      .stat-block { padding: 16px 14px 14px; margin: 28px 0; }
+
+      /* Sleep chart: shrink label text, let value wrap below */
+      .sleep-row-label { flex-wrap: wrap; }
+      .sleep-row-label strong { font-size: 11px; }
+
+      /* 700 stat: stack */
+      .big-stat { flex-direction: column; align-items: flex-start; gap: 4px; }
+      .big-stat-number { font-size: 52px; }
+      .big-stat-text { font-size: 14px; }
+
+      /* BAC: stack vertically */
+      .bac-infographic {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+      }
+      .bac-vs {
+        writing-mode: horizontal-tb;
+        padding: 8px 20px;
+        border-left: none;
+        border-right: none;
+        border-top: 1px solid #222240;
+        border-bottom: 1px solid #222240;
+        font-size: 10px;
+      }
+      .bac-side { padding: 22px 20px; }
+      .bac-big  { font-size: 30px; }
+      .bac-side-right .bac-big { font-size: 24px; }
+
+      /* Powers: single column */
+      .powers-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">Biig Yaya</a>
+    <div style="display:flex; align-items:center; gap:24px;">
+      <ul class="nav-links">
+        <li><a href="../index.html">Writing</a></li>
+        <li><a href="../about.html">About</a></li>
+      </ul>
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">
+        <span class="icon" id="theme-icon">☽</span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+
+    <a href="../index.html" class="back-link">&#8592; All writing</a>
+
+    <div class="article-header">
+      <h1>Marvel got it wrong</h1>
+      <div class="meta">May 2026</div>
+    </div>
+
+    <div class="article-body">
+
+      <p>Every superhero in those movies needs something external.</p>
+
+      <p>A spider bite. A government serum. A radioactive accident. A suit made of iron. A magic hammer from another dimension that only chooses you if you are, and I am quoting here, worthy.</p>
+
+      <p>Nobody makes a movie about the woman who pushed a human being out of her body and then woke up two hours later because she heard it make a small noise from the other room.</p>
+
+      <p>That is a superpower. A documented, peer-reviewed, scientifically verifiable superpower. And she did not need a lab to get it.</p>
+
+      <p>Let us talk about the sleep thing first, because I think people hear "new moms don't sleep much" and picture something manageable. Like a college student pulling an all-nighter on finals night while wired on 30 milligrams of Adderall and a four-pack of sugar-free Red Bull. Sugar-free, because you do not want to have a heart attack. You want to suffer responsibly.</p>
+
+      <p>That is not the same. That is not even in the same sport.</p>
+
+      <p>In the first week after giving birth, the average new mother sleeps 4.4 hours a day. Not 4.4 in a single stretch. Total. Her longest uninterrupted sleep during that week is 2.2 hours. Pre-baby, that same woman was sleeping 7.8 hours a night with 5.6 uninterrupted. Across the first year, new parents lose roughly 700 hours of sleep. That is almost a month of your life, gone, in one year, while you are also running a small human being who has no concept of schedules, no concept of personal space, and absolutely zero interest in your wellbeing as a separate person.</p>
+
+      <!-- VISUAL 1: Sleep chart -->
+      <div class="stat-block">
+        <div class="stat-block-label">The sleep situation &#8212; before vs. week one</div>
+        <div class="sleep-rows">
+          <div class="sleep-row">
+            <div class="sleep-row-label">
+              <strong>Total sleep &#8212; before baby</strong>
+              <span class="val">7.8 hrs/night</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill bar-blue" style="width:100%">7.8 hrs</div>
+            </div>
+          </div>
+          <div class="sleep-row">
+            <div class="sleep-row-label">
+              <strong>Total sleep &#8212; week one</strong>
+              <span class="val">4.4 hrs/day</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill bar-coral" style="width:56%">4.4 hrs</div>
+            </div>
+          </div>
+          <hr class="chart-divider">
+          <div class="sleep-row">
+            <div class="sleep-row-label">
+              <strong>Uninterrupted &#8212; before baby</strong>
+              <span class="val">5.6 hrs</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill bar-blue-light" style="width:72%">5.6 hrs</div>
+            </div>
+          </div>
+          <div class="sleep-row">
+            <div class="sleep-row-label">
+              <strong>Uninterrupted &#8212; week one</strong>
+              <span class="val">2.2 hrs</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill bar-coral-light" style="width:28%">2.2 hrs</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VISUAL 2: 700 hours -->
+      <div class="stat-block">
+        <div class="stat-block-label">Year one, by the numbers</div>
+        <div class="big-stat">
+          <div class="big-stat-number">700</div>
+          <div class="big-stat-text">
+            Hours of sleep lost in the first year of the baby&#8217;s life.
+            <em>That is 29 full days. A month of your life. Gone. While you were also keeping someone else alive.</em>
+          </div>
+        </div>
+      </div>
+
+      <p>For context, the US military considers 24 hours without sleep to be equivalent to a blood alcohol level of 0.10. That is legally drunk. Above the limit to drive. And yet there she is, at 3 AM, holding a crying baby with one arm, Googling symptoms with the other, making decisions, reading cues, staying calm, functioning. Meanwhile the rest of us cannot operate a coffee machine before 9 AM without nearly crying.</p>
+
+      <!-- VISUAL 3: BAC infographic -->
+      <div class="bac-wrap">
+        <div class="bac-header">What 24 hours without sleep looks like &#8212; legally speaking</div>
+        <div class="bac-infographic">
+          <div class="bac-side bac-side-left">
+            <div class="bac-icon">&#x1FA96;</div>
+            <div class="bac-headline">24 hrs, no sleep</div>
+            <div class="bac-big">0.10</div>
+            <div class="bac-tag">BAC equivalent</div>
+            <div class="bac-desc">Above the legal limit to drive. Per US military research.</div>
+          </div>
+          <div class="bac-vs">vs</div>
+          <div class="bac-side bac-side-right">
+            <div class="bac-icon">&#x1F931;</div>
+            <div class="bac-headline">24 hrs, no sleep</div>
+            <div class="bac-big">Still up</div>
+            <div class="bac-tag">Running a human</div>
+            <div class="bac-desc">Making decisions. Reading cues. Googling symptoms at 3 AM. No days off.</div>
+          </div>
+        </div>
+      </div>
+
+      <p>Nobody calls that extraordinary. It just gets filed under motherhood and everyone moves on.</p>
+
+      <p>Here is what is actually happening inside the body while all of this is going on. During pregnancy and in the months after birth, a woman&#8217;s brain physically restructures itself. Not metaphorically. Literally. Gray matter volume changes in the amygdala, the prefrontal cortex, the hypothalamus. These are the regions that handle threat detection, emotional regulation, and decision-making. They are being recalibrated, specifically and measurably, to make her more attuned to the baby&#8217;s needs. A study out of Amsterdam found these structural changes are still visible two years after birth.</p>
+
+      <p>Her brain is not the same brain she had before.</p>
+
+      <p>Not worse. Different. Upgraded without her permission, by her own body, which apparently decided it knew better and did not need to run it by her first. The audacity of biology.</p>
+
+      <!-- VISUAL 4: Superpower cards -->
+      <div class="stat-block">
+        <div class="stat-block-label">Documented upgrades. No lab required.</div>
+        <div class="powers-grid">
+          <div class="power-card">
+            <div class="power-card-icon">&#x1F442;</div>
+            <div class="power-card-title">Precision hearing</div>
+            <div class="power-card-desc">Can identify her baby&#8217;s cry in a room full of other crying babies. Brain filters the world down to one signal.</div>
+          </div>
+          <div class="power-card">
+            <div class="power-card-icon">&#x1F443;</div>
+            <div class="power-card-title">Heightened smell</div>
+            <div class="power-card-desc">Pregnancy triggers hyperosmia &#8212; extreme odor sensitivity. Useful. Mostly deployed on diapers.</div>
+          </div>
+          <div class="power-card">
+            <div class="power-card-icon">&#x1F9E0;</div>
+            <div class="power-card-title">Brain restructure</div>
+            <div class="power-card-desc">Gray matter changes in the amygdala, prefrontal cortex, and hypothalamus. Visible on scans two years later.</div>
+          </div>
+          <div class="power-card">
+            <div class="power-card-icon">&#x1F489;</div>
+            <div class="power-card-title">Oxytocin flood</div>
+            <div class="power-card-desc">Nursing releases massive quantities of the bonding hormone. Sustained. While sleep deprived. While healing.</div>
+          </div>
+        </div>
+      </div>
+
+      <p>The hearing thing is not a myth. Mothers develop the ability to identify their own baby&#8217;s cry in a room full of noise, a room full of other crying babies, a room that to anyone else is just wall-to-wall chaos. Her brain has learned to filter the entire world down to that one signal. Special Forces soldiers train for years to develop that kind of situational awareness under stress. She got it in a few weeks, for free, as a side effect of keeping someone alive. The military has a whole budget for this. She got it postpartum.</p>
+
+      <p>The smell thing is also real. Pregnancy can trigger hyperosmia, a heightened sensitivity to odor. Which sounds like a wonderful gift until you consider that she is using it primarily to smell a person who cannot yet handle their own waste situation. Evolution is out here playing pranks.</p>
+
+      <p>And then there is the oxytocin. Nursing releases it in enormous quantities. Oxytocin is the bonding hormone, the one linked to trust, calm, and connection. Her brain is releasing it in a sustained flood while she is simultaneously sleep deprived, physically healing from an experience that would put most people in a hospital bed for a week, and keeping a new human being alive around the clock. The chemistry alone would destroy most clinical trial participants. She is the clinical trial.</p>
+
+      <p>There is no serum that does what pregnancy does to a human body. No injection, no government program, no classified lab accident that accidentally produces a hero. The body just decides, over nine months and beyond, that it needs to become something it was not before. And it does. Without asking. Without a manual. Without a single trial run, because there is no trial run. The first time is the real time. The baby does not care that you are figuring it out.</p>
+
+      <p>You want to talk about a superhero origin story? A person&#8217;s entire physiology restructures itself to produce new abilities, and she does not even get a cool name or a leather suit. She gets a diaper bag and a sleep schedule that would make a Navy SEAL weep.</p>
+
+      <p>I think about my own mother sometimes. Not the big moments. The small ones. The way she would hear me cough from two rooms away and appear in the doorway before I even knew I was sick. The way she could tell something was wrong before I said a word. The way she ran on almost nothing, for years, and made it look like just a normal Tuesday.</p>
+
+      <p>I never registered it as remarkable when it was happening. You do not, when you are the kid. You just think that is what moms are. You think everyone has access to that kind of attention, that kind of endurance, that level of just-being-there.</p>
+
+      <p>You do not realize until later that she was operating at a level most people will never reach, running on a schedule that would hospitalize someone who did not have her reasons.</p>
+
+      <p>Marvel keeps looking for the origin story. The accident. The experiment. The moment the ordinary person becomes something more.</p>
+
+      <p>They keep missing the one that happens every day, in hospitals, in bedrooms, in the middle of the night in a quiet house where a woman wakes up from two hours of sleep because she heard something, and she goes.</p>
+
+      <p>No cape required.</p>
+
+    </div>
+
+  </main>
+
+  <footer>
+    &copy; 2026 Biig Yaya. All rights reserved.
+  </footer>
+
+  <script>
+    const icon = document.getElementById('theme-icon');
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+      icon.textContent = '☀';
+    }
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      const dark = document.body.classList.contains('dark');
+      localStorage.setItem('theme', dark ? 'dark' : 'light');
+      icon.textContent = dark ? '☀' : '☽';
+    }
+  </script>
+
+</body>
+</html>
