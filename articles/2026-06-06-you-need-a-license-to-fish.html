@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>You Need a License to Fish — Maktub</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">maktub</a>
+    <div style="display:flex; align-items:center; gap:24px;">
+      <ul class="nav-links">
+        <li><a href="../index.html">Writing</a></li>
+        <li><a href="../about.html">About</a></li>
+      </ul>
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">
+        <span class="icon" id="theme-icon">☽</span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+
+    <a href="../index.html" class="back-link">← All writing</a>
+
+    <div class="article-header">
+      <h1>You Need a License to Fish</h1>
+      <div class="meta">But Not to Raise a Human Being</div>
+    </div>
+
+    <div class="article-body">
+
+      <p>There I was, doing what every person with too many thoughts and not enough sleep does at night: scrolling. And there she was. Honey Boo Boo. Apparently pregnant. Taking shots with a group of people I did not recognize.</p>
+
+      <p>I put my phone down. I stared at nothing for a while.</p>
+
+      <p>Not because of her specifically. Her choices are her business and I have no place in that conversation. But the image did something to my brain that I cannot undo. Because here is the thing: you need a license to drive a car. A license to fish. To cut hair. To sell real estate. To practice medicine. To own a dog in most counties. You need a health permit to sell food out of a truck. You need a certification to teach yoga. You need a background check to coach little league.</p>
+
+      <p>There is no background check to create a human being.</p>
+
+      <p>Think about what that means. You can wake up one morning, make a decision you barely thought through, and nine months later be responsible for the entire psychological architecture of a person who will then go on to interact with all the rest of us. No evaluation. No test. Nobody asks if you can manage your own emotions before they hand you responsibility for someone else's. Nobody asks anything at all.</p>
+
+      <p>The DMV line for my driver's license was forty-five minutes long. There was a written test. A vision check. A driving exam with a stranger in the passenger seat watching my hands. Then a probationary period before I could drive at night.</p>
+
+      <p>And then those same bureaucrats, the ones who wouldn't let me merge without signaling, turned around and had absolutely nothing to say about the other thing.</p>
+
+      <p>I'm not naive about why. The second you try to build a gate around reproduction, history shows up with a body count. Every time someone has proposed "standards" for who gets to have children, it has always ended up targeting the wrong people for the wrong reasons. The poor. The disabled. Certain races. Anyone the people in charge found inconvenient. I know this. I am not proposing a system. I'm not writing policy.</p>
+
+      <p>I'm just pointing out that we never even have the conversation.</p>
+
+      <p>We built courts and contracts and health codes and traffic laws and zoning regulations and food safety standards and environmental impact reports. We built all of that because we decided, correctly, that some things are too consequential to leave to chance. And then we turned around, looked at the single most consequential act a human being can perform, putting a person into the world and shaping who they become, and collectively decided: you know what, just wing it.</p>
+
+      <p>No preparation required. No reflection asked for. Not even a pamphlet.</p>
+
+      <p>You have to pass a test to become a substitute teacher. You do not have to pass anything to become someone's entire childhood.</p>
+
+      <p>Maybe Honey Boo Boo will be a wonderful mother. People surprise you constantly. People who had no business raising anyone end up doing it with more tenderness than the ones who planned everything. And people with all the resources and all the right intentions still manage to leave their kids in therapy for a decade. So maybe a license wouldn't fix it anyway. Maybe you cannot test for the things that actually matter: patience, consistency, the willingness to show up on the days you have nothing left.</p>
+
+      <p>But I would at least like us to acknowledge the gap. That we treat driving a car as something worth gatekeeping and treat raising a human being as something that requires no thought whatsoever before it begins. That the hardest, most permanent job in existence, one whose output we all have to live with, is the only one with no application.</p>
+
+      <p>We are very serious about the infrastructure of civilization. We have never once asked whether you are prepared to produce the people who run it.</p>
+
+    </div>
+
+  </main>
+
+  <footer>
+    &copy; 2026 Maktub. All rights reserved.
+  </footer>
+
+  <script>
+    const icon = document.getElementById('theme-icon');
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+      icon.textContent = '☀';
+    }
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      const dark = document.body.classList.contains('dark');
+      localStorage.setItem('theme', dark ? 'dark' : 'light');
+      icon.textContent = dark ? '☀' : '☽';
+    }
+  </script>
+
+</body>
+</html>
