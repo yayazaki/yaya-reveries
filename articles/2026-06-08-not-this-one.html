@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Not This One — Maktub</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">maktub</a>
+    <div style="display:flex; align-items:center; gap:24px;">
+      <ul class="nav-links">
+        <li><a href="../index.html">Writing</a></li>
+        <li><a href="../about.html">About</a></li>
+      </ul>
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">
+        <span class="icon" id="theme-icon">☽</span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+
+    <a href="../index.html" class="back-link">← All writing</a>
+
+    <div class="article-header">
+      <h1>Not This One</h1>
+      <div class="meta">June 2026</div>
+    </div>
+
+    <div class="article-body">
+
+      <p>There is a very specific pause that happens when you tell someone you're not on the dating apps.</p>
+
+      <p>Not a long pause. Just a beat. The kind where you can see them doing math in their head.</p>
+
+      <p>"Have you tried Hinge?"</p>
+
+      <p>I have.</p>
+
+      <p>"Bumble?"</p>
+
+      <p>Also yes.</p>
+
+      <p>"Okay but what about Muzz? It's specifically for—"</p>
+
+      <p>I know what it is.</p>
+
+      <p>The pause again. And then, gently, like someone delivering news to a person who doesn't know they're lost: "So... why not?"</p>
+
+      <p>The honest answer sounds paranoid out loud and reasonable only in my head. But here it is.</p>
+
+      <p>The algorithm already has everything else.</p>
+
+      <p>Think about it. Spotify knew I was in a depressed era before I did. I was driving somewhere, feeling fine, and the playlist quietly shifted toward Sufjan Stevens. A warning shot. I checked in with myself. Oh. Yes. Something is off. The machine diagnosed it first.</p>
+
+      <p>Netflix kept me awake last month because it understood, before I consciously decided anything, that I wasn't actually trying to sleep. I was avoiding tomorrow. So it queued the next episode. Helpful. Evil. Genuinely both.</p>
+
+      <p>Google Maps rerouted me last week without asking. I was going somewhere I've been a hundred times. The app suggested a different road. I followed it like a loyal citizen. Got there fine. Didn't even think about it until I pulled up.</p>
+
+      <p>The algorithm knows what's funny. What I should be angry about. What fashion era I've apparently entered without noticing. It has my mood, my sleep habits, my Tuesday afternoon. It holds information about me I haven't said out loud to anyone.</p>
+
+      <p>And now someone is suggesting I hand it my love life too.</p>
+
+      <p>I genuinely understand the appeal. Dating is confusing and apps make it faster, which people mistake for easier. Instead of investing four months in the wrong person before discovering a fatal incompatibility, you get the answer in forty minutes over mediocre coffee. Efficient. Honest. Good engineering.</p>
+
+      <p>That's the word that stops me.</p>
+
+      <p>Engineering.</p>
+
+      <p>Because I think, and I'm aware this is the kind of thing that people who die alone say, I think the irrational part is the point. The wrong time, wrong city, wrong circumstances person you meet anyway. The conversation that was supposed to be twenty minutes and went four hours. The thing that makes absolutely no algorithmic sense.</p>
+
+      <p>An algorithm would have told Romeo: "Based on your profile and stated preferences, Juliet is an 83% compatibility match. However, family conflict indicators suggest a 12% long-term viability score. Would you like to see other profiles in the Verona area?"</p>
+
+      <p>There is one evening I think about sometimes. A family function I didn't want to attend, the kind where no one explains anything, everyone arrives ninety minutes late, and at some point twelve people are crammed into a kitchen designed for four. I was near the door. Strategically positioned for the earliest polite exit.</p>
+
+      <p>I had the best conversation I'd had in years.</p>
+
+      <p>With someone I had met before and barely noticed. Something about that night, that kitchen, that specific chaos, made something different click. I've tried to understand what exactly. Can't get there. That's kind of the point.</p>
+
+      <p>No app would have surfaced that. The algorithm doesn't know what a crowded family kitchen feels like at 9pm. It doesn't know the look someone gives you when they're also trying to leave. It doesn't know timing. It knows patterns.</p>
+
+      <p>I think about that evening every time someone asks why I'm not on the apps.</p>
+
+      <p>There's this idea we've all quietly accepted, that the goal is to minimize the inefficiency of finding people. To front-load the information, reduce the randomness, maximize the match rate. Makes sense as a product. Doesn't quite make sense as a life.</p>
+
+      <p>Because most things that have mattered to me arrived sideways. Without a profile. Without anyone's best angles preselected. They arrived in the gaps between the plan.</p>
+
+      <p>I'm not saying never. I know people who met on apps and are genuinely happy. I'm not claiming I'm doing better by avoiding it. I'm probably doing lonelier, if I'm honest.</p>
+
+      <p>But there's one corner I want to keep unoptimized. One thing left to chance, to timing, to the unpredictable mechanics of just being somewhere, talking to someone, with no score attached.</p>
+
+      <p>The algorithm can have my music, my route, my feed, my Tuesday.</p>
+
+      <p>Not this.</p>
+
+    </div>
+
+  </main>
+
+  <footer>
+    &copy; 2026 Maktub All rights reserved...... jk None of this is copyrighted lmfao, just checking if you were curious enough to scroll here lol.
+  </footer>
+
+  <script>
+    const icon = document.getElementById('theme-icon');
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+      icon.textContent = '☀';
+    }
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      const dark = document.body.classList.contains('dark');
+      localStorage.setItem('theme', dark ? 'dark' : 'light');
+      icon.textContent = dark ? '☀' : '☽';
+    }
+  </script>
+
+</body>
+</html>
