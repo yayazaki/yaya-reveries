@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>He Just Needs a Wife — maktub</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">maktub</a>
+    <div style="display:flex; align-items:center; gap:24px;">
+      <ul class="nav-links">
+        <li><a href="../index.html">Writing</a></li>
+        <li><a href="../about.html">About</a></li>
+      </ul>
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">
+        <span class="icon" id="theme-icon">☽</span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+
+    <a href="../index.html" class="back-link">← All writing</a>
+
+    <div class="article-header">
+      <h1>He Just Needs a Wife</h1>
+      <div class="meta">June 9, 2026</div>
+    </div>
+
+    <div class="article-body">
+
+      <p>Back home, they had a diagnosis for everything that wasn't a broken bone.</p>
+
+      <p>Get him married.</p>
+
+      <p>That was it. That was the treatment plan. Man in his twenties acting strange, withdrawing, quiet, angry for no reason? Get him married. Something heavy sitting on his chest he can't explain? Get him married. Can't sleep, can't eat, can't tell you why? Brother, that's a wife problem. Solve that, you solve the rest.</p>
+
+      <p>And if he was already married? Then it was a kid problem. Have a kid. That'll give you purpose. That'll fill whatever hollow thing you're carrying around and pretending isn't there.</p>
+
+      <p>Nobody asked what the hollow thing was. You don't go looking at a wound like that. You cover it. You marry it off. You pass it to the next generation dressed as a solution, and they'll figure it out or they won't, but at least it's their problem now.</p>
+
+      <p>That was the cycle. Not cruel. Just resourceful in a way that created new problems at the same rate it solved old ones.</p>
+
+      <p>I didn't know the word depression until I was well into my twenties. I didn't know anxiety was a clinical thing and not just being nervous. I didn't know that the noise inside my head, the constant opinionated noise that never shut up, had a name. A category. A treatment protocol. I thought that was just what it felt like to be a person.</p>
+
+      <p>Back home, we called the real cases crazy. The ones who couldn't hide it anymore. The ones whose lid finally came off. Everything before that point was just life. Just what you carried.</p>
+
+      <p>Then I moved. And I watched people talk about therapy like it was a dentist appointment. Casual. Routine. I watched people say "I'm in a depressive episode" the same way I'd say "I have a cold." There was language for it. There were professionals. There were, eventually, pills.</p>
+
+      <p>Here's what nobody tells you about the medication: it doesn't fix anything.</p>
+
+      <p>You wake up the same. Most mornings you still don't like yourself very much. The things that bother you still bother you. The thoughts still show up uninvited, like relatives who don't call ahead.</p>
+
+      <p>But the volume is lower.</p>
+
+      <p>That's it. That's the whole thing. You still hear everything, but now you have a knob. You can't turn it off. You can turn it down. The day I realized I could actually manage the level of my own internal noise, that I could intervene on myself, felt like finding a room in your house that was always there and you never once opened the door.</p>
+
+      <p>And then the uncomfortable part.</p>
+
+      <p>Two days without the meds and I'm losing it. Not dramatically. Nothing you'd see from the outside. But the volume goes back up. The thoughts get louder. The version of me I worked to quiet comes back like it never agreed to leave.</p>
+
+      <p>Which left me sitting with a question: did the West give me a condition, or did it give me language for something I was already living with?</p>
+
+      <p>I don't know. Genuinely. Maybe the diagnosis was always true and I just didn't have the word. Maybe I was the cousin someone pointed to and said "he needs a wife" and everyone nodded and moved on.</p>
+
+      <p>Or maybe I learned it. Absorbed the vocabulary, the framework, and my brain, being the cooperative organ it is, started performing it back.</p>
+
+      <p>Back home they had a solution. It was wrong. It was passed down. It cost people things they never recovered. But it was clean. You didn't have to sit with the question. You just got married and hoped for the best.</p>
+
+      <p>Now I have a name for it. A pill for it. Two days off it and I can feel exactly what it does and doesn't do for me.</p>
+
+      <p>The problem with learning to hear yourself is that you can't unhear what you find.</p>
+
+    </div>
+
+  </main>
+
+  <footer>
+    &copy; 2026 Maktub All rights reserved...... jk None of this is copyrighted lmfao, just checking if you were curious enough to scroll here lol.
+  </footer>
+
+  <script>
+    const icon = document.getElementById('theme-icon');
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+      icon.textContent = '☀';
+    }
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      const dark = document.body.classList.contains('dark');
+      localStorage.setItem('theme', dark ? 'dark' : 'light');
+      icon.textContent = dark ? '☀' : '☽';
+    }
+  </script>
+
+</body>
+</html>

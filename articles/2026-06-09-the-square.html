@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Square — maktub</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">maktub</a>
+    <div style="display:flex; align-items:center; gap:24px;">
+      <ul class="nav-links">
+        <li><a href="../index.html">Writing</a></li>
+        <li><a href="../about.html">About</a></li>
+      </ul>
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">
+        <span class="icon" id="theme-icon">☽</span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+
+    <a href="../index.html" class="back-link">← All writing</a>
+
+    <div class="article-header">
+      <h1>The Square</h1>
+      <div class="meta">June 9, 2026</div>
+    </div>
+
+    <div class="article-body">
+
+      <p>You've seen the square.</p>
+
+      <p>Black background, white text. PRAY FOR [CITY]. Sometimes a flag. Sometimes a candle emoji. 47 likes, a few heart reacts, one person who says "stay strong" in the comments. You scroll past it, or you share it, or maybe you make one yourself.</p>
+
+      <p>The city keeps burning.</p>
+
+      <p>I used to think awareness was the obstacle. That if people just knew, really knew, what was happening, something would shift. That the gap between atrocity and response was an information gap, and the fix was documentation.</p>
+
+      <p>And then we got the documentation.</p>
+
+      <p>Now we have everything. Live footage. Cell phone videos from inside the thing as it happens. Firsthand accounts in real time. You can watch a city get bombed and see the posts of the people inside it before the dust settles. The information gap is gone.</p>
+
+      <p>And the city keeps burning.</p>
+
+      <p>This is where the logic breaks down and I don't have a clean answer, which is uncomfortable to sit with. Because the old story was: people don't act because they don't know. Show them. Put it in front of them. Make it undeniable. And they will move.</p>
+
+      <p>But there's a version of the world now where people know and the knowing exists completely separately from the outcome. Where awareness floats above the event like a balloon that got away. Visible, drifting, doing nothing to stop the fall.</p>
+
+      <p>Part of it is the scroll. There's only so much moral outrage a person can hold before the body starts numbering it. Today this city, tomorrow that one, next week a different atrocity, and at some point the brain stops treating it as emergency and starts treating it as weather. Something that happens. Something you post about. Something that passes.</p>
+
+      <p>Everyone is in their hamster wheel. That's not an insult. It's just true. You have rent, you have kids, you have a job that's consuming you, and somewhere in the background there is a war that has been happening since before your morning coffee. It doesn't stop being real because you can't fix it. It also doesn't stop because you posted the square.</p>
+
+      <p>I don't know what the answer is. I want to be honest about that. I don't think the square is worthless. I don't think awareness is nothing. I just think we oversold what it could do. We thought information was power. Turns out information is just information. Power is a different thing, harder to locate, and it doesn't live in a share button.</p>
+
+      <p>Maybe that's the real condition of the modern world. Not ignorance. Not cruelty. Just knowing, and going back to your scroll.</p>
+
+      <p>We know. We've known. And most of us don't know what to do with the knowing. So we make a square and we move on and the city keeps burning and tomorrow there will be a different square and we'll do the whole thing again.</p>
+
+      <p>I don't know what to do with that. But I think pretending the square is enough is the one thing we can't afford.</p>
+
+    </div>
+
+  </main>
+
+  <footer>
+    &copy; 2026 Maktub All rights reserved...... jk None of this is copyrighted lmfao, just checking if you were curious enough to scroll here lol.
+  </footer>
+
+  <script>
+    const icon = document.getElementById('theme-icon');
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+      icon.textContent = '☀';
+    }
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      const dark = document.body.classList.contains('dark');
+      localStorage.setItem('theme', dark ? 'dark' : 'light');
+      icon.textContent = dark ? '☀' : '☽';
+    }
+  </script>
+
+</body>
+</html>
