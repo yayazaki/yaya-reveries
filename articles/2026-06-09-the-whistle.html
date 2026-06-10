@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Whistle — Maktub</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+  <nav>
+    <a href="../index.html" class="nav-logo">maktub</a>
+    <div style="display:flex; align-items:center; gap:24px;">
+      <ul class="nav-links">
+        <li><a href="../index.html">Writing</a></li>
+        <li><a href="../about.html">About</a></li>
+      </ul>
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle dark mode">
+        <span class="icon" id="theme-icon">☽</span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+
+    <a href="../index.html" class="back-link">← All writing</a>
+
+    <div class="article-header">
+      <h1>The Whistle</h1>
+      <div class="meta">On the freest country I could find</div>
+      <div class="meta">June 9, 2026 · 9:14 PM</div>
+    </div>
+
+    <div class="article-body">
+
+      <p>The orcas were eating when the boat pulled up.</p>
+
+      <p>A pod of them working a seal carcass in the water off Monterey, and the people on the whale-watching trip did what people do. They crowded the rail. Phones out. Somebody leaned over and whistled. Maybe to keep a whale near the surface. Maybe for no reason at all. Nobody can really tell you why. It was a whistle.</p>
+
+      <p>The woman who owned the boat, a marine biologist named Nancy Black, had been running trips on that bay for years. She filmed the trips, edited the footage, sold it. Small business stuff.</p>
+
+      <p>Weeks later, the federal government came for her.</p>
+
+      <p>Not a fine in the mail. Agents. An investigation that dragged on for years. Charges that, stacked together, carried the kind of prison time you give people for armed robbery. The thing that lit the fuse was a whistle at a whale and a video she had trimmed before handing it over. She fought it for years. Spent a fortune. In the end she pleaded to a single count and walked away with probation, a twelve-thousand-dollar fine, and three hundred hours of community service.</p>
+
+      <p>She wasn't a saint about it. There was whale blubber in the water on other days, footage cut before the government saw it. Fine. But somewhere between that and a decade in a cell, proportion got up and left the room.</p>
+
+      <p>Here is the part I can't put down.</p>
+
+      <p>I grew up on the idea of this country as the free one. That was the whole pitch. Other places, you watched what you said and to whom, and you learned the specific cold feeling of a sentence leaving your mouth in front of the wrong man. Here, the brochure said, none of that. Here you were free.</p>
+
+      <p>Then you look at the numbers. Five percent of the world's people live here. Somewhere around a quarter of the world's prisoners are here too. We lock up more human beings than China, a country with four times the population. We add new felonies the way other places add public holidays, dozens a year, until the rulebook got so thick that a Harvard lawyer ran the math and figured the average person commits something like three federal felonies a day without knowing it. You. Me. The woman who whistled.</p>
+
+      <p>My father used to explain why we left by talking about words. Back home, he said, the wrong word to the wrong person and you were gone. No trial, no record, no boat ride home. Just gone. Then he'd say the line he loved most about America, the one he said the way other people say a prayer. Here, the law is the law.</p>
+
+      <p>He meant it as the most beautiful thing he had ever heard. And compared to where we came from, it was. Paradise on paper.</p>
+
+      <p>He just never got to the fine print.</p>
+
+      <p>Because freedom, the way it was sold to me, was the absence of a man with a gun at your door. And we mostly have that. The man doesn't come for what you think. The trick is quieter and worse. The rulebook got so big that everybody is guilty of something, all the time, which means the man at the door isn't deciding whether you broke a law. You did. He's deciding whether to bother.</p>
+
+      <p>You're not free. You're unnoticed. There's a difference, and you only find out where the line is on the day somebody walks over it carrying your name.</p>
+
+      <p>Nancy Black didn't get buried because she was dangerous. She got selected. Somebody pulled her thread and the machine did the thing the machine is built to do, which is keep going long after any sane person would have stopped. The whistle was never the point. The whistle was just the loose end that happened to be hanging out where a hand could reach it.</p>
+
+      <p>That's the thing nobody warns you about when they hand you the flag. Back home you knew exactly how unfree you were. The country was at least honest about it. It told you to your face. Here they give you a flag and a fishing license and a deep, genuine belief that you can do whatever you want, and they let you find out the rest on your own time.</p>
+
+      <p>The whales finished the seal and slid back under the water. They moved on to wherever whales go.</p>
+
+      <p>They were the only ones who left that bay free.</p>
+
+    </div>
+
+  </main>
+
+  <footer>
+    &copy; 2026 Maktub. All rights reserved.
+  </footer>
+
+  <script>
+    const icon = document.getElementById('theme-icon');
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+      icon.textContent = '☀';
+    }
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      const dark = document.body.classList.contains('dark');
+      localStorage.setItem('theme', dark ? 'dark' : 'light');
+      icon.textContent = dark ? '☀' : '☽';
+    }
+  </script>
+
+</body>
+</html>
